@@ -1,0 +1,15 @@
+id = "pelago"
+name = "Pelago"
+description = "Pelago language support: syntax highlighting and the `pelago lsp` language server."
+version = "0.0.1"
+schema_version = 1
+authors = ["pelagolang"]
+repository = "https://github.com/pelagolang/zed-pelago"
+
+[grammars.pelago]
+repository = "https://github.com/pelagolang/tree-sitter-pelago"
+commit = "05899d4ac3a1a50efdc025ea06e1baafe3b6e5d0"
+
+[language_servers.pelago]
+name = "Pelago"
+languages = ["Pelago"]
