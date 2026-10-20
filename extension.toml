@@ -8,7 +8,7 @@ repository = "https://github.com/pelagolang/zed-pelago"
 
 [grammars.pelago]
 repository = "https://github.com/pelagolang/tree-sitter-pelago"
-commit = "2e820ea7c94784b1c33cd917f449c4dcf02c27ce"
+commit = "c4ccbe5ad2ba42fe75c2142648f01ee2735acc4a"
 
 [language_servers.pelago]
 name = "Pelago"

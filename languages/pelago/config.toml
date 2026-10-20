@@ -1,8 +1,8 @@
 name = "Pelago"
 grammar = "pelago"
 path_suffixes = ["pel"]
-line_comments = ["// ", "/// "]
-block_comment = { start = "/* ", prefix = "* ", end = "*/", tab_size = 1 }
+line_comments = ["/// ", "//~ "]
+block_comment = { start = "///* ", prefix = "", end = "*///", tab_size = 1 }
 autoclose_before = ";:.,=}])>"
 brackets = [
     { start = "{", end = "}", close = true, newline = true },
@@ -10,7 +10,7 @@ brackets = [
     { start = "(", end = ")", close = true, newline = true },
     { start = "\"", end = "\"", close = true, newline = false, not_in = ["string", "comment"] },
     { start = "'", end = "'", close = true, newline = false, not_in = ["string", "comment"] },
-    { start = "/*", end = " */", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "///*", end = " *///", close = true, newline = false, not_in = ["string", "comment"] },
 ]
 tab_size = 4
 word_characters = ["_"]
