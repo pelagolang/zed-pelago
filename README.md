@@ -24,3 +24,7 @@ and also builds the pinned grammar to wasm the way Zed does.
 ## Publishing
 
 Not published yet; see [PUBLISHING.md](PUBLISHING.md) for what the Zed registry needs.
+
+## Licence
+
+MIT OR Apache-2.0, at your option: see `LICENSE-MIT` and `LICENSE-APACHE`.
