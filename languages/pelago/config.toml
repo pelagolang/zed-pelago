@@ -2,7 +2,7 @@ name = "Pelago"
 grammar = "pelago"
 path_suffixes = ["pel"]
 line_comments = ["// ", "/// "]
-block_comment = ["/* ", " */"]
+block_comment = { start = "/* ", prefix = "* ", end = "*/", tab_size = 1 }
 autoclose_before = ";:.,=}])>"
 brackets = [
     { start = "{", end = "}", close = true, newline = true },

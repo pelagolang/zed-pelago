@@ -4,7 +4,7 @@ Language support for [Pelago](https://github.com/pelagolang/pelago) (`.pel` file
 
 - **Colours, brackets, indents, outline:** from the Tree-sitter grammar in `pelagolang/tree-sitter-pelago`, pinned by commit in `extension.toml`.
   The query files in `languages/pelago/` are copies of that repository's `queries/`; copy them again when the grammar changes and bump the commit.
-- **Language server:** the extension starts `pelago lsp` (errors as you type, hover, go to definition, references, completion). The `pelago` tool must be on your `PATH`.
+- **Language server:** the extension starts `pelago lsp` (errors as you type, hover, go to definition, references, completion). The `pelago` tool must be on your `PATH` (on Windows the folder that holds `pelago.exe`, or `cargo install --path compiler` in the compiler repository); restart Zed after changing `PATH`.
 
 ## Try it locally
 
@@ -14,6 +14,13 @@ installed with `rustup`.) Check the Zed log if a grammar fails to build: the gen
 ## Checking the Rust part by itself
 
 ```
-rustup target add wasm32-wasip1
-cargo build --release --target wasm32-wasip1
+rustup target add wasm32-wasip2
+cargo build --release --target wasm32-wasip2
 ```
+
+`script/check-queries.sh` checks that the files in `languages/pelago/` are exact copies of the ones in the pinned grammar commit. CI runs both,
+and also builds the pinned grammar to wasm the way Zed does.
+
+## Publishing
+
+Not published yet; see [PUBLISHING.md](PUBLISHING.md) for what the Zed registry needs.

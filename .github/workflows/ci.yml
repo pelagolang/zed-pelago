@@ -1,0 +1,39 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  extension:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: rustup target add wasm32-wasip2
+      - run: cargo fmt --check
+      - run: cargo clippy --target wasm32-wasip2 -- -D warnings
+      - name: Build the extension (what Zed compiles)
+        run: cargo build --release --target wasm32-wasip2
+      # These two need to fetch the grammar repository, which only works while it is public (as it must be to publish).
+      - name: The queries are copies of the pinned grammar's
+        if: ${{ !github.event.repository.private }}
+        run: script/check-queries.sh
+  grammar:
+    if: ${{ !github.event.repository.private }}
+    # Zed compiles the pinned grammar to wasm itself; do the same here so a broken pin shows up before a release.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build the pinned grammar to wasm
+        run: |
+          repo=$(sed -n 's/^repository = "\(.*tree-sitter-pelago\)"/\1/p' extension.toml)
+          commit=$(sed -n 's/^commit = "\(.*\)"/\1/p' extension.toml)
+          git init -q grammar
+          git -C grammar fetch -q --depth 1 "$repo" "$commit"
+          git -C grammar checkout -q FETCH_HEAD
+          cd grammar
+          npm install --no-save tree-sitter-cli@0.27.1
+          npx tree-sitter build --wasm -o ../pelago.wasm
+          ls -l ../pelago.wasm
