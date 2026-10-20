@@ -13,9 +13,12 @@ jobs:
       - run: cargo clippy --target wasm32-wasip2 -- -D warnings
       - name: Build the extension (what Zed compiles)
         run: cargo build --release --target wasm32-wasip2
+      # These two need to fetch the grammar repository, which only works while it is public (as it must be to publish).
       - name: The queries are copies of the pinned grammar's
+        if: ${{ !github.event.repository.private }}
         run: script/check-queries.sh
   grammar:
+    if: ${{ !github.event.repository.private }}
     # Zed compiles the pinned grammar to wasm itself; do the same here so a broken pin shows up before a release.
     runs-on: ubuntu-latest
     steps:
