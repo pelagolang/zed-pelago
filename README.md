@@ -34,7 +34,7 @@ and also builds the pinned grammar to wasm the way Zed does.
 
 ## Publishing
 
-Not published yet; see [PUBLISHING.md](PUBLISHING.md) for what the Zed registry needs.
+Not published yet: neither the Zed registry nor `zed.dev/extensions` lists Pelago (checked 2026-11-25). See [PUBLISHING.md](PUBLISHING.md) for the registry steps and [CHANGELOG.md](CHANGELOG.md) for what the next release carries. Until then, install it as a dev extension (above).
 
 ## Licence
 

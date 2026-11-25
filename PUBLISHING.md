@@ -8,8 +8,8 @@ Not published yet, and nothing here is automatic: the owner opens the registry P
 - [x] **Licence.** `MIT OR Apache-2.0` (`LICENSE-MIT`, `LICENSE-APACHE`), chosen by the owner on 2026-10-20.
 - [ ] **Re-test in Zed once** at the exact commit you will submit (the registry requires it; the first try-out is done): command palette, `zed: install dev extension`, pick this folder.
 - [ ] **Grammar pin.** `extension.toml` pins `tree-sitter-pelago` by `commit`. If the grammar or its queries changed, copy `queries/*.scm` into `languages/pelago/`, bump the commit, and run `script/check-queries.sh`.
-- [ ] **Version.** `extension.toml` and `Cargo.toml` both say `0.0.1`; keep them equal and bump both for every release. The registry entry must carry the same version.
-- [ ] The id `pelago` and the name `Pelago` follow the registry's rules (kebab case, no `zed` or `extension`, matches the language). On 2026-10-20 the registry's `extensions.toml` had no `pelago` entry (the part of the file that could be read, up to the `p`s).
+- [x] **Version.** `extension.toml` and `Cargo.toml` both say `0.1.0`; keep them equal and bump both for every release. The registry entry must carry the same version.
+- [ ] The id `pelago` and the name `Pelago` follow the registry's rules (kebab case, no `zed` or `extension`, matches the language). On 2026-11-25 neither the registry repository's `.gitmodules` nor the registry API (`https://api.zed.dev/extensions?filter=pelago`) listed a Pelago extension.
 
 ## The registry PR
 
@@ -29,7 +29,7 @@ Add to the top-level `extensions.toml`:
 ```toml
 [pelago]
 submodule = "extensions/pelago"
-version = "0.0.1"
+version = "0.1.0"
 ```
 
 Then `pnpm sort-extensions` (sorts `extensions.toml` and `.gitmodules`) and open the PR. One extension per PR; answer maintainers within three weeks.
