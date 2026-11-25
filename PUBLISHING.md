@@ -6,7 +6,7 @@ Not published yet, and nothing here is automatic: the owner opens the registry P
 
 - [ ] **Make the repositories public.** `zed-pelago` and `tree-sitter-pelago` are private today; the registry needs both public (Zed clones the grammar from its URL, so a private grammar cannot even be installed by others). CI's grammar checks are skipped while this repository is private.
 - [x] **Licence.** `MIT OR Apache-2.0` (`LICENSE-MIT`, `LICENSE-APACHE`), chosen by the owner on 2026-10-20.
-- [ ] **Re-test in Zed once** at the exact commit you will submit (the registry requires it; the first try-out is done): command palette, `zed: install dev extension`, pick this folder. The checklist is in the pelago repository, `docs/plans/cards/S-05-zed-and-tree-sitter.md`.
+- [ ] **Re-test in Zed once** at the exact commit you will submit (the registry requires it; the first try-out is done): command palette, `zed: install dev extension`, pick this folder.
 - [ ] **Grammar pin.** `extension.toml` pins `tree-sitter-pelago` by `commit`. If the grammar or its queries changed, copy `queries/*.scm` into `languages/pelago/`, bump the commit, and run `script/check-queries.sh`.
 - [ ] **Version.** `extension.toml` and `Cargo.toml` both say `0.0.1`; keep them equal and bump both for every release. The registry entry must carry the same version.
 - [ ] The id `pelago` and the name `Pelago` follow the registry's rules (kebab case, no `zed` or `extension`, matches the language). On 2026-10-20 the registry's `extensions.toml` had no `pelago` entry (the part of the file that could be read, up to the `p`s).
